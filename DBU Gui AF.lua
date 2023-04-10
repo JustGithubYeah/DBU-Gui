@@ -13,7 +13,6 @@ local kickRemote = game:GetService("ReplicatedStorage").Package.Events.mel
 local Settings = {Tables = {Forms = {'SSJB4','Ultra Ego','SSJBUI','LBSSJ4','SSJR3','SSJB3','True God of Destruction','True God of Creation','God of Destruction','God of Creation','Super Broly','Jiren Ultra Instinct','Mastered Ultra Instinct','Godly SSJ2','LSSJG','Ultra Instinct Omen','Evil SSJ','Blue Evolution','Dark Rose','Kefla SSJ2','SSJ Berserker','LSSJ4','True Rose','SSJG4','SSJB Kaioken','LSSJ3','SSJ Rose','SSJ Blue','SSJ5','Mystic Kaioken','Corrupt SSJ','SSJ Rage','LSSJ Kaioken','SSJG','SSJ4','Mystic','LSSJ','SSJ3','Spirit SSJ','SSJ2 Majin','SSJ2 Kaioken','SSJ2','SSJ Kaioken','SSJ','FSSJ','Kaioken'}};Variables = {Farm = false}}
 local chargeRemote = game:GetService("ReplicatedStorage").Package.Events.cha
 _G.autoEquip = True
-
 spawn(function()
     while _G.autoEquip == true do
     local args = ("Mach Kick")
@@ -21,7 +20,20 @@ spawn(function()
     wait(15)
     end
 end)
-   
+spawn(function()
+    while _G.autoEquip == true do
+    local args = ("Spirit Barrage")
+        equipRemote:InvokeServer()
+    wait(15)
+    end
+end)
+spawn(function()
+    while _G.autoEquip == true do
+    local args = ("God Slicer")
+        equipRemote:InvokeServer()
+    wait(15)
+    end
+end)
 local function returnQuest(boolean)
     local quest = getrenv()._G.x.GetRecommendedQuest(game.Players.LocalPlayer)
     if (boolean) and quest:find('Vills Planet') then 
@@ -78,6 +90,8 @@ local RebirthFarm = Main.Toggle({
                         repeat wait()
                              pcall(function() plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,2) end)
                              punchRemote:FireServer("Blacknwhite27",1)
+                             kickRemote:InvokeServer("God Slicer","Blacknwhite27")
+                             kickRemote:InvokeServer("Spirit Barrage","Blacknwhite27")
                              kickRemote:InvokeServer("Mach Kick","Blacknwhite27")
                         until not v or not v:FindFirstChild('Humanoid') or not v:FindFirstChild('HumanoidRootPart') or v.Humanoid.Health <= 0 or not Settings.Variables.Farm or plr.PlayerGui:WaitForChild('Main').MainFrame.Frames.Quest.Nop.Visible
                     end 
